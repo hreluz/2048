@@ -1,13 +1,17 @@
+body {
+    margin: 40px;
+}
+
 .container{
-    max-width: 768px;
+    max-width: 460px;
 }
 
 .box {
     border: 4px solid #73AD21;
     position: relative;
     text-align: center;
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 150px;
+    max-height: 150px;
 }
 
 .box:after {
@@ -21,8 +25,11 @@
     width: 100%;
     height: 100%;
 
-    font-size: 2em;
-    padding-top: 20%;
+    font-size: 1.4em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .no-padding-right{

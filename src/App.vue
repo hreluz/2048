@@ -1,88 +1,15 @@
 <template>
   <div id="app">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-
-            <div class="col-xs-3 col-lg-3 no-padding-right no-padding-left box">
-                <div class="number">2048</div>
-            </div>
-        </div>
-    </div>
+    <app-grid></app-grid>
   </div>
 </template>
 
 <script>
+import Grid from './Grid.vue'
 export default {
+  components:{
+    'app-grid' : Grid
+  },
   name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
-  }
 }
 </script>
