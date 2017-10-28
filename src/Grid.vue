@@ -73,9 +73,18 @@ export default{
 
             if(key_pressed >= 37 && key_pressed <= 40){
 
+                switch(key_pressed){
+                    case 37: key_pressed = 'left';break;
+                    case 38: key_pressed = 'up';break;
+                    case 39: key_pressed = 'right';break;
+                    case 40: key_pressed = 'down';break;
+                }
+                console.log(key_pressed);
+
+
                 for(let i = 0; i < 4 ; i++){
                     for(let j = 0 ; j < 4 ; j++){
-                        this.doMovement(i,j);
+                        this.doMovement(i,j, key_pressed);
                     }
                 }
 
@@ -84,21 +93,54 @@ export default{
                 }
             }
         },
-        doMovement(x,y){
+        doMovement(x,y, key_pressed){
             var initialBox = this.rows[x][y];
+
             if(initialBox.inUse){
                 console.log('doMovement '+x+','+y);
                 var actualBox;
                 var i;
+                var symbol;
+                var operation;
+                var spinning = true;
 
-                for(i = (y-1); i >= 0; i--){
-                    console.log(x + ',' + i);
+                if(key_pressed == 'up' || key_pressed == 'left'){
+                    symbol = '>=';
+                    operation = '-';
+                }else{
+                    symbol = '<=';
+                    operation = '+';
+                }
 
-                    actualBox = this.rows[x][i];
-                    initialBox = this.rows[x][i+1];
+                i  = key_pressed == 'up' || key_pressed ==  'down' ? x : y ;
+
+
+                while(spinning){
+                    console.log(operation);
+                    i = operation == '-' ? i - 1 : i + 1 ;
+                    spinning = symbol == '>=' ? i >= 0 : i <= 3;
+
+                    if(!spinning){
+                        break;
+                    }
+
+
+                    if(key_pressed == 'up' || key_pressed == 'down'){
+                        actualBox = this.rows[i][y];
+                        initialBox = key_pressed == 'up' ? this.rows[i+1][y] : this.rows[i-1][y] ;
+                        console.log(initialBox);
+
+                    }else{
+                        actualBox = this.rows[x][i];
+                        initialBox = key_pressed == 'left' ? this.rows[x][i+1] : this.rows[x][i-1];
+                        console.log(x+','+i);
+
+                    }
+
                     console.log(actualBox);
 
                     if(typeof actualBox == 'undefined'){
+                        console.log('chau');
                         break;
                     }
 
@@ -115,6 +157,7 @@ export default{
 
                         actualBox.inUse = true;
                         actualBox.number = initialBox.number;
+
                         initialBox.number = 0;
                         initialBox.inUse = false;
                     }
@@ -138,8 +181,6 @@ export default{
     },
     data(){
         return {
-            fogon: 44,
-            prueba :'holaa',
             finished:false,
             rows:[
             ],
